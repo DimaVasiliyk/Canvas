@@ -1,0 +1,12 @@
+.dot{
+	background-color: brown;
+	height: 30px;
+	width: 30px;
+	border-radius: 15px;
+	color: rgb(177, 252, 115);
+	display: flex;
+	justify-content: center;
+}
+.OneDot{
+border-color: darkblue;
+}
