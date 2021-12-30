@@ -10,11 +10,11 @@ function draw(){
 				dots.push(dot)
 				if(dots.length == 3){
 					drawCanvas(dots,ctx)
+					dots = []
 				}
 
 		  });
 }
-
 
 const drawCanvas = (dots,ctx)=>{
 	
@@ -30,38 +30,62 @@ const drawCanvas = (dots,ctx)=>{
 		return Math.floor(Math.random() * (max - min + 1)) + min;
 	  }
 
+
+	  arrColor = [
+		  "rgb(200,200,0)",
+		  "rgb(200,0,200)",
+		  "rgb(0,200,200)",
+		//   "rgb(200,0,30)",
+		//   "rgb(50,0,70)",
+		//   "rgb(0,20,160)",
+		//   "rgb(0,130,10)"
+		];
+
 	let currentPoint = dots[0];
 
 
-	function* idGenerator() {
-		let i = 0;
-		while (i<100000) {
-			let j = getRandomArbitrary(0, 2)
-			let newDot = [((currentPoint[0]+dots[j][0])/2), ((currentPoint[1]+dots[j][1])/2)]
-			ctx.fillRect(newDot[0],newDot[1], x, x)
-			currentPoint = newDot;
-		  yield i++;
-		}
-	  }
+	// function* idGenerator() {
+	// 	let i = 0;
+	// 	let k = 0;
+	// 	while (i<10000000) {
+			// const color = arrColor[k];
+			// k++;
+			// if (k > arrColor.length) k = 0;
 
-	  let it = idGenerator()
+	// 		let j = getRandomArbitrary(0, 2)
+	// 		let newDot = [((currentPoint[0]+dots[j][0])/2), ((currentPoint[1]+dots[j][1])/2)];
+	// 		ctx.fillStyle = color;
+	// 		ctx.beginPath();
+	// 		ctx.arc(1400, 200, 55, 50,Math.PI*2,true);
+	// 		ctx.fillRect(newDot[0],newDot[1], x, x);
+	// 		currentPoint = newDot;
+	// 	  yield i++;
+	// 	}
+	//   }
 
-	  setInterval(() => {
-		it.next().value;
-	  }, 5);
+	//   let it = idGenerator()
+
+	//   setInterval(() => {
+	// 	it.next().value;
+	//   }, 0);
 
 
-	
-	// for(let i= 0 ; i< 1000000; i++){
-	// 	setTimeout(() => {
-	// 	let j = getRandomArbitrary(0, 2)
-	// 	let newDot = [((currentPoint[0]+dots[j][0])/2), ((currentPoint[1]+dots[j][1])/2)]
-	// 	ctx.fillRect(newDot[0],newDot[1], x, x)
-	// 	currentPoint = newDot;
-	// 	}, 100);
-	// }
+	let k = 0;
+	for(let i= 0 ; i< 1000000; i++){
+			const color = arrColor[k];
+			k++;
+			if (k > arrColor.length) k = 0;
+		let j = getRandomArbitrary(0, 2)
+		let newDot = [((currentPoint[0]+dots[j][0])/2), ((currentPoint[1]+dots[j][1])/2)]
+		ctx.fillStyle = color;
+		ctx.beginPath();
+		ctx.arc(1400, 200, 55, 50,Math.PI*2,true);
+		ctx.fillRect(newDot[0],newDot[1], x, x)
+		currentPoint = newDot;
+	}
+	}
 
-}
+
 
     	// ctx.fillStyle = "rgb(200,0,0)";ctx.beginPath();
 		// ctx.arc(1400, 200, 55, 50,Math.PI*2,true);
